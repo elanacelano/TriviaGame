@@ -1,0 +1,38 @@
+html 
+{
+	font-family: 'Muli', sans-serif;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+h1{	
+	text-indent: 10px;	
+	font-size: 653px;
+}
+body {
+    background-image: url("../images/IMG_4642.jpg");
+}
+div {
+    background-color: black;
+    padding: 15px 15px 15px 55px;
+    font-size-adjust: 50;    
+}
+p {
+	text-indent: 10px;	
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+}
+font-family {
+	font: "Playfair Display", serif;
+	font-size: 25px;
+	font-weight: 25px;
+	font-color: white; 
+	background-color: gray;
+}
+button {
+	padding-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+}
+
