@@ -1,67 +1,121 @@
-window.onload = function() {
-  $("#stop").on("click", stopwatch.stop);
-  $("#reset").on("click", stopwatch.reset);
-  $("#start").on("click", stopwatch.start);
-  $("#lap").on("click", stopwatch.start);
+function check() {
+
+    var question1 = document.TriviaGame.question1.value;
+    var question2 = document.TriviaGame.question2.value;
+    var question3 = document.TriviaGame.question3.value;
+    var correct = 0;
+
+    if (question1 == "Gothom City") {
+        correct++;
+    }
+    if (question2 == "Scooby Doo") {
+        correct++;
+    }
+    if (question3 == "Seven") {
+        correct++;
+    }
+
+    var messages = ["Great job!", "Well done!", "That's okay, you will do better next time."]
+    var range;
+
+    if (correct < 1) {
+        range = 2;
+    }
+    if (correct > 0 && correct < 3) {
+        range = 1;
+    }
+    if (correct > 2) {
+        range = 0;
+    }
+
+    function Stopwatch(elem) {
+        var time = 0;
+        var interval;
+        var offset;
+
+        function update() {
+            if (this.isOn) {
+                time += delta();
+            }
+            var formattedTime = timeFormatter(time);
+            elem.textContent = formattedTime;
+        }
+
+        function delta() {
+            var now = Date.now();
+            var timePassed = now - offset;
+            offset = now;
+            return timePassed;
+        }
+
+        function timeFormatter(timeInMilliseconds) {
+            var time = new Date(timeInMilliseconds);
+            var minutes = time.getMinutes().toString();
+            var seconds = time.getSeconds().toString();
+            var milliseconds = time.getMilliseconds().toString();
+
+
+            if (minutes.length < 2) {
+                minutes = "0" + minutes;
+            }
+            if (second.length < 2) {
+                seconds = "0" + seconds;
+            }
+            while (milliseconds.length < 3) {
+                seconds = "0" + milliseconds;
+            }
+            return minutes + ":" + seconds + "." + milliseconds;
+        }
+
+        this.isOn = false;
+
+        this.start = function() {
+            if (!this.isOn) {
+                interval = setInterval(update, 10);
+                offset = Date.now();
+                this.isOn = true;
+            }
+        };
+        this.stop = function() {
+            if (this.isOn) {
+                clearInterval(interval);
+                interval = null;
+                this.isOn = false;
+            }
+        };
+        this.reset = function() {
+            if (!this.isOn) {
+                time = 0;
+                update();
+            };
+        }
+        var timer = document.getElementById("timer");
+        var toggleBtn = document.getElementById("toggle");
+        var resetBtn = document.getElementById("reset");
+
+        var watch = new Stopwatch();
+        elem: timer;
+        delay: 1;
+    };
+
+    function start() {
+        watch.start();
+        toggleBtn.textContent = "Stop";
+    }
+
+    function stop() {
+        watch.start();
+        toggleBtn.textContent = "Start";
+    }
+    toggleBtn.addEventListener("click", function() {
+        (watch.isOn) ? stop(): start();
+    });
+
+    resetBtn.addEventListener("click", function() {
+        watch.reset();
+    });
+
+    documentGetElementById("after_submit").style.visibility = "visible";
+    documentGetElementById("number_correct").inner.HTML = "You got " + correct + " correct.";
+    documentGetElementById("message").inner.HTML = message[range];
 };
-
-var count = 0;
-var clearTime;
-var seconds = 0;
-var clearState;
-//  Variable that will hold our setInterval that runs the stopwatch
-var intervalId;
-
-// Our stopwatch object
-var stopwatch = {
-
-  time: 0,
-  lap: 1,
-
-  reset: function() {
-
-    stopwatch.time = 0;
-    stopwatch.lap = 1;
-
-    // DONE: Change the "display" div to "00:00."
-    $("#display").html("00:00");
-
-    // DONE: Empty the "laps" div.
-    $("#laps").html("");
-  },
-  start: function() {
-
-    // DONE: Use setInterval to start the count here.
-    intervalId = setInterval(stopwatch.count, 1000);
-  },
-  stop: function() {
-
-    // DONE: Use clearInterval to stop the count here.
-    clearInterval(intervalId);
-  },
-timeConverter: function(time) {
-
-    var minutes = Math.floor(time / 60);
-    var seconds = time - (minutes * 60);
-
-    if (seconds < 10) {
-      seconds = "0" + seconds;
-    }
-
-    if (minutes === 0) {
-      minutes = "00";
-    }
-    else if (minutes < 10) {
-      minutes = "0" + minutes;
-    }
-
-    return minutes + ":" + seconds;
-  }
-};  
-function width(){
-   return window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth||0;
-}
-function height(){
-   return window.innerHeight||document.documentElement.clientHeight||document.body.clientHeight||0;
-}
-

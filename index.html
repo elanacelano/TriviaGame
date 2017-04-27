@@ -1,49 +1,55 @@
 <!DOCTYPE html>
 <html lang="en-us">
+
 <head>
-<meta charset="UTF-8">
-<title>TriviaGame</title>
-<link rel="stylesheet" href="assets/css/style.css">
-<link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>TriviaGame</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- <link rel="stylesheet" href="assets/javascript/app.js"> -->
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
 </head>
-<body background="assets/images/IMG_4642.jpg">
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 <font color="white">
 
-<h1>Trivia Game!</h1>
-<p> You have 25 seconds to complete the game. I believe in you!</p>
-
-<div id="display">00:25</div>
-    <button id="start">Start</button>
-    <button id="stop">Stop</button>
-    <button id="reset">Reset</button>
-</div>
-
-<!--jquery-->
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.js"></script>
+    <body background="assets/images/IMG_4642.jpg">
 
 
-<p>Which fictional city is the home of Batman?</p>
-<ul>
-	<li>Gothom City</li>
-	<li>The Bat Cave</li>
-	<li>Smallville</li>
-	<li>New York</li>
-</ul>	
 
-<p>Which crime-fighting cartoon dog has the initals "S.D." on his collar?</p>
-<ul>
-	<li>Super Dog</li>
-	<li>Scrappy Doo</li>
-	<li>Seven Dwarfs</li>
-	<li>Scooby Doo</li>
-</ul>
+        <h1>Trivia Game!</h1>
+        <h2> You have 25 seconds to complete the trivia game. I believe in you!</h2>
+        <form id="TriviaGame" name="Trivia Game"></form>
+        <div id="display">
+            <h2 id="timer">00 : 00. 000</h2>
+            <button id="toggle">Start</button>
+            <button id="reset">Reset</button>
+        </div>
 
-<p>Traditionally, how many Wonders of the World are there?</p>
-<ul>
-	<li>Six</li>
-	<li>Seventeen</li>
-	<li>Seven</li>
-	<li>Sixty</li>
-</ul>
-</body>
+        <p id="tquestion"> Which fictional city is the home of Batman?</p>
+        <input type="radio" id="mc" name="question1" value="Gotham City" checked> Gothom City<br>
+        <input type="radio" id="mc" name="question2" value="The Bat Cave"> The Bat Cave<br>
+        <input type="radio" id="mc" name="question3" value="Smallville"> Smallville<br>
+        <input type="radio" id="mc" name="question4" value="New York"> New York<br>
+
+        <p id="tquestion"> Which crime-fighting cartoon dog has the initals "S.D." on his collar?</p>
+        <input type="radio" id="mc" name="question1" value="Super Dog" checked> Super Dog<br>
+        <input type="radio" id="mc" name="question2" value="Scrappy Doo"> Scrappy Doo<br>
+        <input type="radio" id="mc" name="question3" value="Seven Dwarfs"> Seven Dwarfs<br>
+        <input type="radio" id="mc" name="question4" value="Scooby Doo"> Scooby Doo<br>
+
+        <p id="tquestion"> Traditionally, how many Wonders of the World are there?</p>
+        <input type="radio" id="mc" name="question1" value="Six" checked> Six<br>
+        <input type="radio" id="mc" name="question2" value="Seventeen"> Seventeen<br>
+        <input type="radio" id="mc" name="question3" value="Seven"> Seven<br>
+        <input type="radio" id="mc" name="question4" value="Sixty"> Sixty<br>
+
+        </form>
+        <div id="after_submit">
+            <div id="number_correct"></div>
+            <div id="message"></div>
+            <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.js">
+            </script>
+            <script type="text/javascript" src="assets/javascript/app.js"></script>
+            <script type="text/css" src="assets/css/style.css"></script>
+    </body>
+
 </html>
