@@ -27,12 +27,12 @@ function check() {
     if (correct > 2) {
         range = 0;
     }
-
-    function Stopwatch(elem) {
+  }
+    function Stopwatch() {
         var time = 0;
         var interval;
         var offset;
-
+      }
         function update() {
             if (this.isOn) {
                 time += delta();
@@ -67,9 +67,7 @@ function check() {
             return minutes + ":" + seconds + "." + milliseconds;
         }
 
-        this.isOn = false;
-
-        this.start = function() {
+        function start() {
             if (!this.isOn) {
                 interval = setInterval(update, 10);
                 offset = Date.now();
@@ -89,33 +87,34 @@ function check() {
                 update();
             };
         }
+        var time = document.getElementById("time");
         var timer = document.getElementById("timer");
         var toggleBtn = document.getElementById("toggle");
         var resetBtn = document.getElementById("reset");
 
-        var watch = new Stopwatch();
-        elem: timer;
-        delay: 1;
-    };
-
-    function start() {
-        watch.start();
+    function start1() {
+        start();
         toggleBtn.textContent = "Stop";
+      console.log("HI");
     }
 
     function stop() {
-        watch.start();
+        start();
         toggleBtn.textContent = "Start";
     }
-    toggleBtn.addEventListener("click", function() {
-        (watch.isOn) ? stop(): start();
-    });
+    $("#toggle").on("click", function(){
+        start1();
+    })
+    
+    // toggleBtn.addEventListener("click", function() {
+    //     console.log("Hello!!!!!!")
+    //     // (watch.isOn) ? stop(): start();
+    // });
 
-    resetBtn.addEventListener("click", function() {
-        watch.reset();
-    });
+    // resetBtn.addEventListener("click", function() {
+    //     watch.reset();
+    // });
 
-    documentGetElementById("after_submit").style.visibility = "visible";
-    documentGetElementById("number_correct").inner.HTML = "You got " + correct + " correct.";
-    documentGetElementById("message").inner.HTML = message[range];
-};
+    // documentGetElementById("after_submit").style.visibility = "visible";
+    // documentGetElementById("number_correct").inner.HTML = "You got " + correct + " correct.";
+    // documentGetElementById("message").inner.HTML = message[range];
